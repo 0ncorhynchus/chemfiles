@@ -68,6 +68,9 @@ matrix:
     - os: osx
       compiler: gcc
       env: SHARED_LIBS=OFF
+    - os: osx
+      compiler: clang
+      env: SHARED_LIBS=OFF EMSCRIPTEN=ON
 
 before_install:
   # Setting environement
@@ -77,7 +80,7 @@ before_install:
 script:
   - cd $TRAVIS_BUILD_DIR
   - mkdir build && cd build
-  - cmake $CMAKE_ARGS $CMAKE_EXTRA ..
+  - $CMAKE_CONFIGURE cmake $CMAKE_ARGS $CMAKE_EXTRA ..
   - make -j2
   - ctest -j2 --output-on-failure
   - cd $TRAVIS_BUILD_DIR

@@ -1,0 +1,5 @@
+EMSCRIPTEN_ROOT = '/usr/local/opt/emscripten/libexec'
+LLVM_ROOT = "/usr/local/opt/emscripten/libexec/llvm/bin"
+NODE_JS = '/usr/local/bin/node'
+COMPILER_ENGINE = NODE_JS
+JS_ENGINES = [NODE_JS]
