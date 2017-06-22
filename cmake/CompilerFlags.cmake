@@ -3,6 +3,10 @@ include(CheckCCompilerFlag)
 
 set(CMAKE_REQUIRED_QUIET YES)
 
+if(${CMAKE_GENERATOR} STREQUAL "MSYS Makefiles")
+    set(MSYS true)
+  endif()
+
 # C++11 support.
 CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
 CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)

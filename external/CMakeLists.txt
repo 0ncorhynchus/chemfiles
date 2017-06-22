@@ -1,6 +1,8 @@
 # Do not set C standard for external code, as this make some
 # symbols (such as strdup) undefined.
 string(REPLACE "-std=c99" "" CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
+string(REPLACE "-std=c++11" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+string(REPLACE "-std=gnu++11" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
 set(EXTERNAL_FLAGS "")
 # Disable warnings about external code
@@ -16,7 +18,7 @@ if(${BUILD_SHARED_LIBS} AND NOT WIN32)
     set(EXTERNAL_FLAGS "${EXTERNAL_FLAGS} -fPIC")
 endif()
 
-if(WIN32)
+if(WIN32 AND NOT MSYS)
     set(EXTERNAL_FLAGS "${EXTERNAL_FLAGS} -DWIN32")
 endif()
 
@@ -103,6 +105,7 @@ list(APPEND EXTERNAL_INCLUDES ${NETCDF_INCLUDES})
 # TNG io: https://github.com/chemfiles/tng
 # ==========
 external_library(tng)
+target_compile_definitions(tng_io PRIVATE USE_STD_INTTYPES_H)
 list(APPEND EXTERNAL_INCLUDES ${CMAKE_CURRENT_BINARY_DIR}/tng/include)
 
 # Hide TNG variables from CMake GUI
