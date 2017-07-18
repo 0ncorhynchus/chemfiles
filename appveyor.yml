@@ -25,6 +25,14 @@ environment:
       CXX_PATH: 'C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin'
       ARCH: x64
       SHARED_LIBS: ON
+    - generator: MSYS Makefiles
+      CXX_PATH: 'C:\msys64\mingw32\bin;C:\msys64\usr\bin'
+      ARCH: x86
+      SHARED_LIBS: ON
+    - generator: MSYS Makefiles
+      CXX_PATH: 'C:\msys64\mingw64\bin;C:\msys64\usr\bin'
+      ARCH: x64
+      SHARED_LIBS: ON
 
 configuration:
   - Debug
