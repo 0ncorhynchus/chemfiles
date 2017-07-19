@@ -40,4 +40,7 @@ void silent_crash_handlers();
 // Check return status of C API functions
 #define CHECK_STATUS(expr) CHECK(expr == CHFL_SUCCESS);
 
+#undef NULL
+#define NULL 0
+
 #endif
